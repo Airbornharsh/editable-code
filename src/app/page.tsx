@@ -12,6 +12,12 @@ export default function Home() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
+    setTimeout(() => {
+      setCode(c => c + ' ')
+    }, 1000)
+  },[])
+
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       window.localStorage.setItem('code', code)
     }
