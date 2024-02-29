@@ -1,6 +1,6 @@
 'use client'
 import CodeEditor from '@uiw/react-textarea-code-editor'
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import prettier from 'prettier'
 
 export default function Home() {
@@ -36,10 +36,11 @@ export default function Home() {
         <button onClick={formate}>Format</button>
       </div>
       <div className="flex">
+        <div className='bg-gray-500 text-white w-[50vw] h-[calc(100vh-2.5rem)] '>
         <CodeEditor
           value={code}
           language={'html'}
-          className="bg-gray-500 text-white w-1/2 h-[calc(100vh-2.5rem)] overflow-auto p-2"
+          className="w-[50vw] h-[calc(100vh-2.5rem)] overflow-auto p-2"
           onChange={async (ev) => {
             try {
               setCode(ev.target.value)
@@ -54,7 +55,8 @@ export default function Home() {
             color: '#fff',
           }}
         />
-        <div className="h-[calc(100vh-2.5rem)] bg-white">
+        </div>
+        <div className="h-[calc(100vh-2.5rem)] bg-white text-black w-[50vw]">
           {error ? (
             <pre>{error}</pre>
           ) : (
