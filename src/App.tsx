@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react'
 import prettier from 'prettier'
 
 export default function Home() {
-  const [code, setCode] = useState('')
+  const [code, setCode] = useState(
+    typeof window !== 'undefined'
+      ? window.localStorage.getItem('code') || ''
+      : ''
+  )
   const [error, setError] = useState(null)
 
   useEffect(() => {
