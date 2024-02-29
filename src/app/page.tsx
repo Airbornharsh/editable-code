@@ -53,7 +53,7 @@ export default function Home() {
             overflow: 'auto'
           }}
         />
-        <div className="h-[calc(100vh-2.5rem)]">
+        <div className="h-[calc(100vh-2.5rem)] bg-white">
           {error ? (
             <pre>{error}</pre>
           ) : (
