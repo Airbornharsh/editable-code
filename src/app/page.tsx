@@ -10,8 +10,6 @@ export default function Home() {
   useEffect(() => {
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('code', code)
-    } else {
-      setCode(localStorage.getItem('code') || '')
     }
   }, [code])
 
