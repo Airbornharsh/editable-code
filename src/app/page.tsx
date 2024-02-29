@@ -1,39 +1,39 @@
-'use client'
-import CodeEditor from '@uiw/react-textarea-code-editor'
-import { use, useEffect, useState } from 'react'
-import prettier from 'prettier'
+"use client";
+import CodeEditor from "@uiw/react-textarea-code-editor";
+import { use, useEffect, useState } from "react";
+import prettier from "prettier";
 
 export default function Home() {
   const [code, setCode] = useState(
-    typeof window !== 'undefined'
-      ? window.localStorage.getItem('code') || ''
-      : ''
-  )
-  const [error, setError] = useState(null)
+    typeof window !== "undefined"
+      ? window.localStorage.getItem("code") || ""
+      : ""
+  );
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setTimeout(() => {
-      setCode(c => c + ' ')
-    }, 1000)
-  },[])
+      setCode((c) => c + " ");
+    }, 1000);
+  }, []);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('code', code)
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("code", code);
     }
-  }, [code])
+  }, [code]);
 
   const formate = async () => {
     try {
       const formattedCode = await prettier.format(code, {
-        parser: 'html',
-        plugins: [require('prettier/parser-html')]
-      })
-      setCode(formattedCode)
+        parser: "html",
+        plugins: [require("prettier/parser-html")],
+      });
+      setCode(formattedCode);
     } catch (e: any) {
-      setError(e)
+      setError(e);
     }
-  }
+  };
 
   return (
     <div className="flex flex-col">
@@ -42,25 +42,25 @@ export default function Home() {
         <button onClick={formate}>Format</button>
       </div>
       <div className="flex">
-        <div className='bg-gray-500 text-white w-[50vw] h-[calc(100vh-2.5rem)] '>
-        <CodeEditor
-          value={code}
-          language={'html'}
-          className="w-[50vw] h-[calc(100vh-2.5rem)] overflow-auto p-2"
-          onChange={async (ev) => {
-            try {
-              setCode(ev.target.value)
-            } catch (e: any) {
-              setError(e)
-            }
-          }}
-          style={{
-            backgroundColor: '#111111',
-            fontSize: '1rem',
-            overflow: 'auto',
-            color: '#fff',
-          }}
-        />
+        <div className="bg-gray-500 text-white w-[50vw] h-[calc(100vh-2.5rem)] ">
+          <CodeEditor
+            value={code}
+            language={"html"}
+            className="w-[50vw] h-[calc(100vh-2.5rem)] overflow-auto p-2"
+            onChange={async (ev) => {
+              try {
+                setCode(ev.target.value);
+              } catch (e: any) {
+                setError(e);
+              }
+            }}
+            style={{
+              backgroundColor: "#111111",
+              fontSize: "1rem",
+              overflow: "auto",
+              color: "#fff",
+            }}
+          />
         </div>
         <div className="h-[calc(100vh-2.5rem)] bg-white text-black w-[50vw]">
           {error ? (
@@ -71,5 +71,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  )
+  );
 }
