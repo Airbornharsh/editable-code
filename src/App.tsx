@@ -1,4 +1,3 @@
-'use client'
 import CodeEditor from '@uiw/react-textarea-code-editor'
 import { useEffect, useState } from 'react'
 import prettier from 'prettier'
@@ -26,7 +25,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex flex-col">
+    <div className="flex flex-col">
       <div className="h-10 bg-black border-b-[0.05rem] border-gray-500 flex items-center text-gray-400 justify-between px-2">
         <p>Html Code</p>
         <button onClick={formate}>Format</button>
@@ -57,6 +56,6 @@ export default function Home() {
           )}
         </div>
       </div>
-    </main>
+    </div>
   )
 }
