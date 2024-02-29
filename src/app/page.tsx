@@ -1,3 +1,4 @@
+'use client'
 import CodeEditor from '@uiw/react-textarea-code-editor'
 import { useEffect, useState } from 'react'
 import prettier from 'prettier'
