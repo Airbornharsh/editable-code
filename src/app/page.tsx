@@ -50,7 +50,8 @@ export default function Home() {
           style={{
             backgroundColor: '#111111',
             fontSize: '1rem',
-            overflow: 'auto'
+            overflow: 'auto',
+            color: '#fff',
           }}
         />
         <div className="h-[calc(100vh-2.5rem)] bg-white">
