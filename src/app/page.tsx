@@ -8,8 +8,8 @@ export default function Home() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      localStorage.setItem('code', code)
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('code', code)
     }
   }, [code])
 
