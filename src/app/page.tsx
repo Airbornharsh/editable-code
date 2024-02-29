@@ -1,11 +1,19 @@
 'use client'
 import CodeEditor from '@uiw/react-textarea-code-editor'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import prettier from 'prettier'
 
 export default function Home() {
-  const [code, setCode] = useState(window.localStorage.getItem('code') || '')
+  const [code, setCode] = useState('')
   const [error, setError] = useState(null)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem('code', code)
+    } else {
+      setCode(localStorage.getItem('code') || '')
+    }
+  }, [code])
 
   const formate = async () => {
     try {
@@ -33,7 +41,6 @@ export default function Home() {
           onChange={async (ev) => {
             try {
               setCode(ev.target.value)
-              window.localStorage.setItem('code', ev.target.value)
             } catch (e: any) {
               setError(e)
             }
